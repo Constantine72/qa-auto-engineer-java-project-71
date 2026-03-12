@@ -1,5 +1,11 @@
 plugins {
+    application
+    checkstyle
     id("java")
+}
+
+application {
+    mainClass.set("hexlet.code.App")
 }
 
 group = "hexlet.code"
