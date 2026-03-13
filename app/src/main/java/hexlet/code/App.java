@@ -2,21 +2,42 @@ package hexlet.code;
 
 import picocli.CommandLine;
 import picocli.CommandLine.Command;
+import picocli.CommandLine.Option;
+import picocli.CommandLine.Parameters;
 
-@Command(
-        name = "app",
-        description = "Test CLI application",
-        mixinStandardHelpOptions = true
-)
-public class App implements Runnable {
+import java.util.concurrent.Callable;
+
+@Command(name = "gendiff", mixinStandardHelpOptions = true, version = "1.0",
+        description = "Compares two configuration files and shows a difference.")
+class App implements Callable<Integer> {
 
 
-        @Override
-        public void run() {
-            System.out.println("Hello World!");
-        }
+    @Option(names = {"-f", "--format"}, paramLabel = "format", description = " output format [default: stylish]")
+    private String format;
+
+    @Parameters(index = "0", paramLabel = "filePath1", description = "path to first file")
+    private String filePath1;
+
+    @Parameters(index = "1", paramLabel = "filePath2" , description = "path to second file")
+    private String filePath2;
+
+    @Override
+    public Integer call() throws Exception {
+
+        System.out.println("filePath1 " + filePath1);
+        System.out.println("filePath2 " + filePath2);
+        System.out.println("format " + format);
+
+        var diff = Differ.generate(filePath1, filePath2);
+        System.out.println(diff);
+
+        return 0;
+    }
 
     public static void main(String[] args) {
-        new CommandLine(new App()).execute(args);
+
+            int exitCode = new CommandLine(new App()).execute(args);
+            System.exit(exitCode);
+
     }
 }
