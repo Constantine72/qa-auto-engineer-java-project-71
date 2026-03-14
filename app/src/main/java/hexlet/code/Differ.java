@@ -8,6 +8,8 @@ import java.util.Set;
 import java.util.TreeSet;
 
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.ToNumberPolicy;
 
 public class Differ {
     public static String generate(String filePath1, String filePath2) throws Exception {
@@ -28,10 +30,14 @@ public class Differ {
             String content1 = Files.readString(path1);
             String content2 = Files.readString(path2);
 
-            Gson gson = new Gson();
+            Gson gson = new GsonBuilder()
+                    .setObjectToNumberStrategy(ToNumberPolicy.LONG_OR_DOUBLE)
+                    .create();
             Map dictionary1 = gson.fromJson(content1, Map.class);
             Map dictionary2 = gson.fromJson(content2, Map.class);
 
+
+            System.out.println("\n" + "{");
 
             Set<String> keys = new TreeSet<>();
             keys.addAll(dictionary1.keySet());
@@ -43,34 +49,34 @@ public class Differ {
 
                 if (!dictionary1.containsKey(key)) {
 
-                    result.append("+ ")
+                    result.append(" + ")
                             .append(key)
                             .append(": ")
                             .append(dictionary2.get(key))
                             .append("\n");
                 } else if (!dictionary2.containsKey(key)) {
 
-                    result.append("- ")
+                    result.append(" - ")
                             .append(key)
                             .append(": ")
                             .append(dictionary1.get(key))
                             .append("\n");
                 } else if (!dictionary1.get(key).equals(dictionary2.get(key))) {
 
-                    result.append("- ")
+                    result.append(" - ")
                             .append(key)
                             .append(": ")
                             .append(dictionary1.get(key))
                             .append("\n");
 
-                    result.append("+ ")
+                    result.append(" + ")
                             .append(key)
                             .append(": ")
                             .append(dictionary2.get(key))
                             .append("\n");
                 } else {
 
-                    result.append("  ")
+                    result.append("   ")
                             .append(key)
                             .append(": ")
                             .append(dictionary1.get(key))
