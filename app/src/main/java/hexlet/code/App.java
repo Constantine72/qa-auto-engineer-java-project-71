@@ -24,15 +24,12 @@ class App implements Callable<Integer> {
     @Override
     public Integer call() throws Exception {
 
-        System.out.println("filePath1 " + filePath1);
-        System.out.println("filePath2 " + filePath2);
-        System.out.println("format " + format);
-
         var diff = Differ.generate(filePath1, filePath2);
         System.out.println(diff);
 
         return 0;
     }
+
     public static void main(String[] args) {
 
         int exitCode = new CommandLine(new App()).execute(args);
