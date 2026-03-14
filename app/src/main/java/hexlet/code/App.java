@@ -18,7 +18,7 @@ class App implements Callable<Integer> {
     @Parameters(index = "0", paramLabel = "filePath1", description = "path to first file")
     private String filePath1;
 
-    @Parameters(index = "1", paramLabel = "filePath2" , description = "path to second file")
+    @Parameters(index = "1", paramLabel = "filePath2", description = "path to second file")
     private String filePath2;
 
     @Override
@@ -33,11 +33,9 @@ class App implements Callable<Integer> {
 
         return 0;
     }
-
     public static void main(String[] args) {
 
-            int exitCode = new CommandLine(new App()).execute(args);
-            System.exit(exitCode);
-
+        int exitCode = new CommandLine(new App()).execute(args);
+        System.exit(exitCode);
     }
 }
