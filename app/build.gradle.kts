@@ -2,6 +2,14 @@ plugins {
     application
     checkstyle
     id("java")
+    id("org.sonarqube") version "7.2.2.6593"
+}
+
+sonar {
+    properties {
+        property("sonar.projectKey", "Constantine72_qa-auto-engineer-java-project-71")
+        property("sonar.organization", "constantine72")
+    }
 }
 
 application {
