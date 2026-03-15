@@ -1,7 +1,18 @@
 .PHONY: build run-dist setup
 
-# build:
-# 	./gradlew build
+
+clean:
+	./gradlew clean
+
+build:
+	./gradlew clean build
+
+test:
+	./gradlew test
+
+lint:
+	./gradlew checkstyleMain
+
 
 run-dist:
 # 	./gradlew installDist
