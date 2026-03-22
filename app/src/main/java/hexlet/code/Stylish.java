@@ -18,7 +18,6 @@ public class Stylish {
         result.append(("{\n"));
 
 
-
         String indent = " ".repeat(depth * INDENT_STEP);
         String signIndent = " ".repeat(depth * INDENT_STEP - 2);
 
@@ -62,7 +61,8 @@ public class Stylish {
 
         return result.toString();
     }
-private static String stringify(Object value, int depth) {
+
+    private static String stringify(Object value, int depth) {
 
         if (value == null) {
             return "null";
@@ -82,11 +82,11 @@ private static String stringify(Object value, int depth) {
         for (Map.Entry<String, Object> entry : mapValue.entrySet()) {
             result.append(indent)
                     .append(entry.getKey())
-                            .append(": ")
+                    .append(": ")
                     .append(stringify(entry.getValue(), nextDepth))
                     .append("\n");
         }
         result.append(bracketIndent).append("}");
         return result.toString();
-}
+    }
 }

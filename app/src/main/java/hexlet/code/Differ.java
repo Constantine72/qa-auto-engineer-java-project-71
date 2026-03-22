@@ -9,10 +9,10 @@ import java.util.Map;
 public class Differ {
     public static String generate(String filePath1, String filePath2, String formatName) throws Exception {
 
-            Map<String, Object> data1 = Parser.parse(filePath1);
-            Map<String, Object> data2 = Parser.parse(filePath2);
+        Map<String, Object> data1 = Parser.parse(filePath1);
+        Map<String, Object> data2 = Parser.parse(filePath2);
 
-            List<InnerRep> diffTree = TreeBuilder.buildTree(data1, data2);
+        List<InnerRep> diffTree = TreeBuilder.buildTree(data1, data2);
 
 //            Set<String> keys = new TreeSet<>();
 //            keys.addAll(data1.keySet());
@@ -20,12 +20,13 @@ public class Differ {
 //
 //            List<InnerRep> diffTree = TreeBuilder.buildTree(data1, data2);
 
-            return Stylish.format(diffTree);
-        }
-        public static String generate(String filePath1, String filePath2) throws Exception {
-        return generate(filePath1, filePath2, "stylish");
-        }
+        return Stylish.format(diffTree);
     }
+
+    public static String generate(String filePath1, String filePath2) throws Exception {
+        return generate(filePath1, filePath2, "stylish");
+    }
+}
 
 //            StringBuilder result = new StringBuilder();
 //

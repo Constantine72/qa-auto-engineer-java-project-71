@@ -36,6 +36,6 @@ public class TreeBuilder {
                 innerReps.add(new InnerRep(key, "changed", value1, value2, null));
             }
         }
-            return innerReps;
-        }
+        return innerReps;
     }
+}

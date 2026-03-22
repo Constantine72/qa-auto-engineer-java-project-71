@@ -46,6 +46,7 @@ public class DifferTest {
 
         assertEquals(expected, actual);
     }
+
     @Test
     public void testNestedJsonComparison() throws Exception {
 
@@ -86,6 +87,7 @@ public class DifferTest {
 
         assertEquals(expected, actual);
     }
+
     @Test
     public void testNestedYamlComparison() throws Exception {
 
