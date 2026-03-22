@@ -12,8 +12,8 @@ import java.util.concurrent.Callable;
 class App implements Callable<Integer> {
 
 
-    @Option(names = {"-f", "--format"}, paramLabel = "format", description = " output format [default: stylish]")
-    private String format;
+//    @Option(names = {"-f", "--format"}, paramLabel = "format", description = " output format [default: stylish]")
+//    private String format;
 
     @Parameters(index = "0", paramLabel = "filePath1", description = "path to first file")
     private String filePath1;
@@ -21,11 +21,14 @@ class App implements Callable<Integer> {
     @Parameters(index = "1", paramLabel = "filePath2", description = "path to second file")
     private String filePath2;
 
+    @Option(names = {"-f", "--format"}, description = "output format [default: stylish]", defaultValue = "stylish")
+    private String format;
+
     @Override
     public Integer call() throws Exception {
 
-        var diff = Differ.generate(filePath1, filePath2);
-        System.out.println(diff);
+        var result = Differ.generate(filePath1, filePath2, format);
+        System.out.println(result);
 
         return 0;
     }

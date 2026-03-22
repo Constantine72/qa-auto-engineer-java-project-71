@@ -7,3 +7,4 @@
 [![Coverage](https://sonarcloud.io/api/project_badges/measure?project=Constantine72_qa-auto-engineer-java-project-71&metric=coverage)](https://sonarcloud.io/summary/new_code?id=Constantine72_qa-auto-engineer-java-project-71)
 https://asciinema.org/a/6NjviPPUONQh1uDA
 https://asciinema.org/a/flxtASFGrocl8DYm
+https://asciinema.org/a/z2y7RtaWTOeDCjg1
