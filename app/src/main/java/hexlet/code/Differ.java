@@ -2,8 +2,8 @@ package hexlet.code;
 
 import java.util.List;
 import java.util.Map;
-//import java.util.Set;
-//import java.util.TreeSet;
+import hexlet.code.formatters.Formatter;
+
 
 
 public class Differ {
@@ -20,7 +20,7 @@ public class Differ {
 //
 //            List<InnerRep> diffTree = TreeBuilder.buildTree(data1, data2);
 
-        return Stylish.format(diffTree);
+        return Formatter.format(diffTree, formatName);
     }
 
     public static String generate(String filePath1, String filePath2) throws Exception {

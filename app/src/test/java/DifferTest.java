@@ -1,6 +1,9 @@
 import hexlet.code.Differ;
 import org.junit.jupiter.api.Test;
 
+import java.nio.file.Files;
+import java.nio.file.Path;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class DifferTest {
@@ -127,6 +130,20 @@ public class DifferTest {
         String actual = Differ.generate(path1, path2);
 
         assertEquals(expected, actual);
+    }
+
+    @Test
+    public void testPlainFormat() throws Exception {
+
+        String expectedPlain = Files.readString(Path.of("src/test/resources/expectedPlain.txt"))
+                .replace("\r\n", "\n")
+                .trim();
+
+        String actualPlain = Differ.generate("src/test/resources/fileNested1.json",
+                "src/test/resources/fileNested2.json", "plain")
+                        .trim();
+
+        assertEquals(actualPlain, expectedPlain);
     }
 }
 
