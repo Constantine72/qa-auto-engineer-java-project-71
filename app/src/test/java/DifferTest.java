@@ -140,10 +140,25 @@ public class DifferTest {
                 .trim();
 
         String actualPlain = Differ.generate("src/test/resources/fileNested1.json",
-                "src/test/resources/fileNested2.json", "plain")
-                        .trim();
+                        "src/test/resources/fileNested2.json", "plain")
+                .trim();
 
         assertEquals(actualPlain, expectedPlain);
+    }
+
+    @Test
+    public void testJsonFormat() throws Exception {
+
+        String path1 = "src/test/resources/file1.json";
+        String path2 = "src/test/resources/file2.json";
+
+        String expectedPath = "src/test/resources/expectedJson.json";
+
+        String expected = Files.readString(Path.of(expectedPath));
+
+        String actual = Differ.generate(path1, path2, "json");
+
+        assertEquals(expected, actual);
     }
 }
 
