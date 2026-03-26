@@ -74,10 +74,7 @@ public class DifferTest {
                   + numbers2: [22, 33, 44, 55]
                   - numbers3: [3, 4, 5]
                   + numbers4: [4, 5, 6]
-                  + obj1: {
-                        nestedKey: value
-                        isNested: true
-                    }
+                  + obj1: {nestedKey=value, isNested=true}
                   - setting1: Some value
                   + setting1: Another value
                   - setting2: 200
@@ -115,10 +112,7 @@ public class DifferTest {
                   + numbers2: [22, 33, 44, 55]
                   - numbers3: [3, 4, 5]
                   + numbers4: [4, 5, 6]
-                  + obj1: {
-                        nestedKey: value
-                        isNested: true
-                    }
+                  + obj1: {nestedKey=value, isNested=true}
                   - setting1: Some value
                   + setting1: Another value
                   - setting2: 200
