@@ -7,6 +7,9 @@ clean:
 build:
 	./gradlew clean build
 
+install:
+	./gradlew clean installDist
+
 test:
 	./gradlew test
 
@@ -15,8 +18,6 @@ lint:
 
 
 run-dist:
-# 	./gradlew installDist
+
 	./build/install/app/bin/app
 
-# setup:
-# 	./gradlew clean

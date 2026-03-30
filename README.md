@@ -10,3 +10,50 @@ https://asciinema.org/a/flxtASFGrocl8DYm
 https://asciinema.org/a/z2y7RtaWTOeDCjg1
 https://asciinema.org/a/9jdb0cRP7frxgJGq
 https://asciinema.org/a/Z4hnbuHk7uAW839s
+
+
+# Gendiff
+
+Gendiff is a command-line utility that finds differences between two data structures. It supports JSON and YAML formats
+and can generate reports in three different output styles
+
+
+## Output Formats
+
+1. Stylish - a tree-like structure that visually represents the hierarchy, similar to the original files but with  
+change markers(+,-)
+2. Plain - a flat text format that describes changes as a list of "Property was added/removed/updated" actions
+3. JSON - produces the difference tree in a machine-readable format
+
+
+## Architecture Logic
+
+The app follows a three-step pipeline:
+
+1. Parsing: identifies file extensions and parses content into a Map
+2. Tree Building: compares two maps and creates an internal representation of the differences
+3. Formatting: a formatter renders the representation into a requested string format (Stylish, Plain, JSON)
+
+
+## Installation & Setup
+
+### Technologies
+
+- Java 21 or higher
+- Gradle 8.x
+- Jackson
+- JUnit 5 & AssertJ
+- Picocli
+
+### Install 
+
+```bash
+make install
+```
+
+### Run Test
+
+```bash
+make test
+```
+
