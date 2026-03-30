@@ -1,11 +1,18 @@
-package hexlet.code;
+package hexlet.code.formatters;
+
+import hexlet.code.InnerRep;
 
 import java.util.List;
 import java.util.Map;
 
-public class Stylish {
+public final class Stylish {
 
-    private static final int INDENT_STEP = 4;
+    private Stylish() {
+
+        throw new IllegalStateException("Utility class");
+    }
+
+    private static final int INDENT_STEP = 1;
 
     public static String format(List<InnerRep> diffTree) {
 
@@ -19,7 +26,6 @@ public class Stylish {
 
 
         String indent = " ".repeat(depth * INDENT_STEP);
-        String signIndent = " ".repeat(depth * INDENT_STEP - 2);
 
         for (InnerRep innerRep : innerReps) {
 
@@ -31,29 +37,29 @@ public class Stylish {
                     break;
 
                 case "added":
-                    result.append(signIndent).append("+ ").append(innerRep.getName()).append(": ")
-                            .append(stringify(innerRep.getValue2(), depth)).append("\n");
+                    result.append(indent).append(" + ").append(innerRep.getName())
+                            .append(": ").append(String.valueOf(innerRep.getValue2())).append("\n");
                     break;
 
                 case "deleted":
-                    result.append(signIndent).append("- ").append(innerRep.getName()).append(": ")
-                            .append(stringify(innerRep.getValue1(), depth)).append("\n");
+                    result.append(indent).append(" - ").append(innerRep.getName())
+                            .append(": ").append(String.valueOf(innerRep.getValue1())).append("\n");
                     break;
 
                 case "unchanged":
-                    result.append(indent).append(innerRep.getName()).append(": ")
-                            .append(stringify(innerRep.getValue1(), depth)).append("\n");
+                    result.append(indent + "   " + innerRep.getName() + ": " + String.valueOf(innerRep.getValue1())
+                            +
+                            "\n");
                     break;
 
                 case "changed":
-                    result.append(signIndent).append("- ").append(innerRep.getName()).append(": ")
-                            .append(stringify(innerRep.getValue1(), depth)).append("\n");
-
-                    result.append(signIndent).append("+ ").append(innerRep.getName()).append(": ")
-                            .append(stringify(innerRep.getValue2(), depth)).append("\n");
+                    result.append(indent).append(" - ").append(innerRep.getName())
+                            .append(": ").append(String.valueOf(innerRep.getValue1())).append("\n");
+                    result.append(indent).append(" + ").append(innerRep.getName())
+                            .append(": ").append(String.valueOf(innerRep.getValue2())).append("\n");
                     break;
                 default:
-                    throw new RuntimeException("Unknown node type: " + innerRep.getType());
+                    throw new IllegalStateException("Unknown node type: " + innerRep.getType());
             }
         }
         String bracketIndent = " ".repeat((depth - 1) * INDENT_STEP);
