@@ -13,15 +13,11 @@ public final class Formatter {
     public static String format(List<InnerRep> tree, String formatName) throws Exception {
 
 
-        switch (formatName) {
-            case "stylish":
-                return Stylish.format(tree);
-            case "plain":
-                return Plain.format(tree);
-            case "json":
-                return JSON.format(tree);
-            default:
-                throw new IllegalStateException("Unknown format: " + formatName);
-        }
+        return switch (formatName) {
+            case "stylish" -> Stylish.format(tree);
+            case "plain" -> Plain.format(tree);
+            case "json" -> JSON.format(tree);
+            default -> throw new IllegalStateException("Unknown format: " + formatName);
+        };
     }
 }
