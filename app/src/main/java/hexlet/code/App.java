@@ -5,8 +5,8 @@ import picocli.CommandLine.Command;
 import picocli.CommandLine.Option;
 import picocli.CommandLine.Parameters;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+//import org.slf4j.Logger;
+//import org.slf4j.LoggerFactory;
 
 import java.util.concurrent.Callable;
 
@@ -14,7 +14,7 @@ import java.util.concurrent.Callable;
         description = "Compares two configuration files and shows a difference.")
 class App implements Callable<Integer> {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(App.class);
+//    private static final Logger LOGGER = LoggerFactory.getLogger(App.class);
 
 
     @Parameters(index = "0", paramLabel = "filePath1", description = "path to first file")
@@ -30,7 +30,8 @@ class App implements Callable<Integer> {
     public Integer call() throws Exception {
 
         var result = Differ.generate(filePath1, filePath2, format);
-        LOGGER.info(result);
+        //NOSONAR
+        System.out.println(result);
 
         return 0;
     }
