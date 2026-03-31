@@ -4,8 +4,15 @@ import hexlet.code.InnerRep;
 
 import java.util.List;
 
-public class Formatter {
+public final class Formatter {
+
+    private Formatter() {
+        throw new IllegalStateException("Utility class");
+    }
+
     public static String format(List<InnerRep> tree, String formatName) throws Exception {
+
+
         switch (formatName) {
             case "stylish":
                 return Stylish.format(tree);
@@ -14,7 +21,7 @@ public class Formatter {
             case "json":
                 return JSON.format(tree);
             default:
-                throw new RuntimeException("Unknown format: " + formatName);
+                throw new IllegalStateException("Unknown format: " + formatName);
         }
     }
 }

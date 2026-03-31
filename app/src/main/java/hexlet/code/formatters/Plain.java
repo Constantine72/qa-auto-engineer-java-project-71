@@ -6,7 +6,11 @@ import java.util.Map;
 
 import hexlet.code.InnerRep;
 
-public class Plain {
+public final class Plain {
+
+    private Plain() {
+        throw new IllegalStateException("Utility class");
+    }
 
     public static String format(List<InnerRep> tree) {
 
@@ -17,6 +21,8 @@ public class Plain {
 
         List<String> lines = new ArrayList<>();
 
+        var property = "Property";
+
         for (InnerRep innerRep : tree) {
 
             String currentPath = path.isEmpty() ? innerRep.getName() : path + "." + innerRep.getName();
@@ -24,17 +30,17 @@ public class Plain {
             switch (innerRep.getType()) {
 
                 case "added":
-                    lines.add("Property '" + currentPath + "' was added with value: "
+                    lines.add(property + " '" + currentPath + "' was added with value: "
                             +
                             formatValue(innerRep.getValue2()));
                     break;
 
                 case "deleted":
-                    lines.add("Property '" + currentPath + "' was removed");
+                    lines.add(property + " '" + currentPath + "' was removed");
                     break;
 
                 case "changed":
-                    lines.add("Property '" + currentPath + "' was updated. From " + formatValue(innerRep.getValue1())
+                    lines.add(property + " '" + currentPath + "' was updated. From " + formatValue(innerRep.getValue1())
                             + " to " + formatValue(innerRep.getValue2()));
                     break;
 
@@ -51,7 +57,7 @@ public class Plain {
                     break;
 
                 default:
-                    throw new RuntimeException("Unknown innerRep type " + innerRep.getType());
+                    throw new IllegalStateException("Unknown innerRep type " + innerRep.getType());
             }
         }
         return String.join("\n", lines);

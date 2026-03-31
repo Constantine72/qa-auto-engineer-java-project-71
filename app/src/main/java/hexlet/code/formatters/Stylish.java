@@ -47,7 +47,7 @@ public final class Stylish {
                     break;
 
                 case "unchanged":
-                    result.append(indent + "   " + innerRep.getName() + ": " + String.valueOf(innerRep.getValue1())
+                    result.append(indent + "   " + innerRep.getName() + ": " + innerRep.getValue1()
                             +
                             "\n");
                     break;

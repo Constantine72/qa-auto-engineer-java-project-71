@@ -5,7 +5,11 @@ import hexlet.code.InnerRep;
 
 import java.util.List;
 
-public class JSON {
+public final class JSON {
+
+    private JSON() {
+        throw new IllegalStateException("Utility class");
+    }
 
     public static String format(List<InnerRep> tree) throws Exception {
 

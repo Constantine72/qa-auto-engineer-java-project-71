@@ -7,7 +7,11 @@ import java.util.Set;
 import java.util.Objects;
 import java.util.TreeSet;
 
-public class TreeBuilder {
+public final class TreeBuilder {
+
+    private TreeBuilder() {
+        throw new IllegalStateException("Utility class");
+    }
 
     public static List<InnerRep> buildTree(Map<String, Object> data1, Map<String, Object> data2) {
 

@@ -6,7 +6,12 @@ import java.util.Map;
 import hexlet.code.formatters.Formatter;
 
 
-public class Differ {
+public final class Differ {
+
+    private Differ() {
+        throw new IllegalStateException("Utility class");
+    }
+
     public static String generate(String filePath1, String filePath2, String formatName) throws Exception {
 
         Map<String, Object> data1 = Parser.parse(filePath1);

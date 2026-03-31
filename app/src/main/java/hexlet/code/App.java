@@ -5,11 +5,16 @@ import picocli.CommandLine.Command;
 import picocli.CommandLine.Option;
 import picocli.CommandLine.Parameters;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.util.concurrent.Callable;
 
 @Command(name = "gendiff", mixinStandardHelpOptions = true, version = "1.0",
         description = "Compares two configuration files and shows a difference.")
 class App implements Callable<Integer> {
+
+    private static final Logger LOGGER = LoggerFactory.getLogger(App.class);
 
 
     @Parameters(index = "0", paramLabel = "filePath1", description = "path to first file")
@@ -25,7 +30,7 @@ class App implements Callable<Integer> {
     public Integer call() throws Exception {
 
         var result = Differ.generate(filePath1, filePath2, format);
-        System.out.println(result);
+        LOGGER.info(result);
 
         return 0;
     }

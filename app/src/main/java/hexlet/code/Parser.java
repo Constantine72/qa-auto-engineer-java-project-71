@@ -7,13 +7,19 @@ import com.google.gson.ToNumberPolicy;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.dataformat.yaml.YAMLFactory;
 
+import java.io.IOException;
+
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.Map;
 
-public class Parser {
+public final class Parser {
 
-    public static Map<String, Object> parse(String filepath) throws Exception {
+    private Parser() {
+        throw new IllegalStateException("Utility class");
+    }
+
+    public static Map<String, Object> parse(String filepath) throws IOException {
 
         String content = Files.readString(Path.of(filepath));
 
@@ -27,7 +33,7 @@ public class Parser {
                     .create();
             return gson.fromJson(content, Map.class);
         } else {
-            throw new Exception("Unsupported file format: " + filepath);
+            throw new IllegalArgumentException("Unsupported file format: " + filepath);
         }
     }
 }
