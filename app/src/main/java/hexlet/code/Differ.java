@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Map;
 import java.nio.file.Paths;
 import java.nio.file.Path;
+import java.io.IOException;
 
 
 import hexlet.code.formatters.Formatter;
@@ -16,14 +17,15 @@ public final class Differ {
         throw new IllegalStateException("Utility class");
     }
 
+    public static String generate(String filePath1, String filePath2) throws Exception {
+        return generate(filePath1, filePath2, "stylish");
+    }
+
     public static String generate(String filePath1, String filePath2, String formatName) throws Exception {
 
-        Path fullPath1 = Paths.get(filePath1).toAbsolutePath().normalize();
-        Path fullPath2 = Paths.get(filePath2).toAbsolutePath().normalize();
 
-
-        String content1 = Files.readString(fullPath1);
-        String content2 = Files.readString(fullPath2);
+        String content1 = readFile(filePath1);
+        String content2 = readFile(filePath2);
 
         String dataType1 = getDataType(filePath1);
         String dataType2 = getDataType(filePath2);
@@ -37,15 +39,19 @@ public final class Differ {
         return Formatter.format(diffTree, formatName);
     }
 
-    public static String generate(String filePath1, String filePath2) throws Exception {
-
-        return generate(filePath1, filePath2, "stylish");
+    private static String readFile(String filePath) throws IOException {
+        Path fullPath = Paths.get(filePath).toAbsolutePath().normalize();
+        if (!Files.exists(fullPath)) {
+            throw new IOException("File not found: " + fullPath);
+        }
+        return Files.readString(fullPath);
     }
 
     private static String getDataType(String filePath) {
         int index = filePath.lastIndexOf('.');
         return index == -1 ? "" : filePath.substring(index + 1);
     }
+
 }
 
 

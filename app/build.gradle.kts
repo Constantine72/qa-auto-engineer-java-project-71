@@ -25,6 +25,7 @@ repositories {
 dependencies {
     testImplementation(platform("org.junit:junit-bom:5.10.0"))
     testImplementation("org.junit.jupiter:junit-jupiter")
+    testImplementation("org.assertj:assertj-core:3.24.2")
     testRuntimeOnly("org.junit.platform:junit-platform-launcher")
     implementation("info.picocli:picocli:4.7.5")
     implementation("com.google.code.gson:gson:2.10.1")
