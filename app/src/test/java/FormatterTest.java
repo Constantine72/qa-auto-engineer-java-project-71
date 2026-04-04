@@ -8,9 +8,12 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Modifier;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
 
-public class FormatterTest {
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
+class FormatterTest {
     private List<InnerRep> tree;
 
     @BeforeEach
