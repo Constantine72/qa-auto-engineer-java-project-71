@@ -1,7 +1,10 @@
+import org.gradle.internal.impldep.org.jsoup.nodes.Document
+
 plugins {
     application
     checkstyle
     id("org.sonarqube") version "7.2.2.6593"
+    id ("jacoco")
 }
 
 sonar {
@@ -37,4 +40,18 @@ dependencies {
 
 tasks.test {
     useJUnitPlatform()
+    finalizedBy("jacocoTestReport")
+}
+
+tasks.withType<org.gradle.testing.jacoco.tasks.JacocoReport> {
+    dependsOn(tasks.test)
+
+    reports {
+        xml.required.set(true)
+        html.required.set(true)
+    }
+}
+
+tasks.named("sonarqube") {
+    dependsOn("jacocoTestReport")
 }
