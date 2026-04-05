@@ -1,14 +1,13 @@
-import hexlet.code.Parser;
-
+import hexlet.code.formatters.JSON;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-public class ParserTest {
+public class JsonTest {
     @Test
     void testConstructorIsPrivate() throws Exception {
-        java.lang.reflect.Constructor<Parser> constructor = Parser.class.getDeclaredConstructor();
+        java.lang.reflect.Constructor<JSON> constructor = JSON.class.getDeclaredConstructor();
         assertTrue(java.lang.reflect.Modifier.isPrivate(constructor.getModifiers()),
                 "Constructor must be private");
         constructor.setAccessible(true);
