@@ -17,7 +17,7 @@ public final class Differ {
         throw new IllegalStateException("Utility class");
     }
 
-    public static String generate(String filePath1, String filePath2) throws Exception {
+    public static String generate(String filePath1, String filePath2) throws IOException {
         return generate(filePath1, filePath2, "stylish");
     }
 
