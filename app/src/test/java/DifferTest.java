@@ -3,6 +3,8 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -53,6 +55,14 @@ public class DifferTest {
         Path filePath = Paths.get("src", "test", "resources", fileName)
                 .toAbsolutePath().normalize();
         return Files.readString(filePath).replace("\r\n", "\n").trim();
+    }
+    @Test
+    void testConstructorIsPrivate() throws Exception {
+        java.lang.reflect.Constructor<Differ> constructor = Differ.class.getDeclaredConstructor();
+        assertTrue(java.lang.reflect.Modifier.isPrivate(constructor.getModifiers()),
+                "Constructor must be private");
+        constructor.setAccessible(true);
+        assertThrows(java.lang.reflect.InvocationTargetException.class, constructor::newInstance);
     }
 }
 
