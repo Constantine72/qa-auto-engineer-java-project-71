@@ -1,4 +1,3 @@
-import hexlet.code.formatters.JSON;
 import hexlet.code.formatters.Stylish;
 import org.junit.jupiter.api.Test;
 
