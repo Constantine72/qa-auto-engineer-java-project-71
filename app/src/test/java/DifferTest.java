@@ -64,6 +64,18 @@ public class DifferTest {
         constructor.setAccessible(true);
         assertThrows(java.lang.reflect.InvocationTargetException.class, constructor::newInstance);
     }
+
+    @Test
+    void testRecursiveNestedFiles() throws Exception {
+        String filePath1 = "src/test/resources/fileNested1.json";
+        String filePath2 = "src/test/resources/fileNested2.json";
+
+        String result = Differ.generate(filePath1, filePath2, "stylish");
+
+        assertThat(result).contains("numbers1");
+        assertThat(result).contains("key");
+        assertThat(result).contains("nestedKey");
+    }
 }
 
 
