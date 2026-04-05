@@ -21,7 +21,7 @@ public final class Differ {
         return generate(filePath1, filePath2, "stylish");
     }
 
-    public static String generate(String filePath1, String filePath2, String formatName) throws Exception {
+    public static String generate(String filePath1, String filePath2, String formatName) throws IOException {
 
 
         String content1 = readFile(filePath1);
