@@ -1,5 +1,6 @@
 package hexlet.code.formatters;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import hexlet.code.InnerRep;
 
 import java.util.List;
@@ -10,7 +11,8 @@ public final class Formatter {
         throw new IllegalStateException("Utility class");
     }
 
-    public static String format(List<InnerRep> tree, String formatName) throws Exception {
+    public static String format(List<InnerRep> tree, String formatName) throws IllegalStateException,
+            JsonProcessingException {
 
 
         return switch (formatName) {
