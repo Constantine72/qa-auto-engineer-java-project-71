@@ -14,7 +14,7 @@ public final class JSON {
         throw new IllegalStateException("Utility class");
     }
 
-    public static String format(List<InnerRep> tree) throws JsonProcessingException{
+    public static String format(List<InnerRep> tree) throws JsonProcessingException {
 
         ObjectMapper mapper = new ObjectMapper();
 
