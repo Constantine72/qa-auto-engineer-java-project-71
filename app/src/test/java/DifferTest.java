@@ -67,13 +67,13 @@ public class DifferTest {
 
     @Test
     void testRecursiveNestedFiles() throws Exception {
-        String filePath1 = "src/test/resources/fileNested1.json";
-        String filePath2 = "src/test/resources/fileNested2.json";
+        String filePath1 = "src/test/resources/fileNestedTest1.json";
+        String filePath2 = "src/test/resources/fileNestedTest2.json";
 
         String result = Differ.generate(filePath1, filePath2, "stylish");
 
-        assertThat(result).contains("numbers1");
-        assertThat(result).contains("key");
+        assertThat(result).contains("value1");
+        assertThat(result).contains("value2");
         assertThat(result).contains("nestedKey");
     }
 }
