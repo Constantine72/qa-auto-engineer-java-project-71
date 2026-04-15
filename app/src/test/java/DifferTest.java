@@ -54,7 +54,7 @@ public class DifferTest {
     public static String readFixture(String fileName) throws Exception {
         Path filePath = Paths.get("src", "test", "resources", fileName)
                 .toAbsolutePath().normalize();
-        return Files.readString(filePath).replace("\r\n", "\n").trim();
+        return Files.readString(filePath).trim();
     }
     @Test
     void testConstructorIsPrivate() throws Exception {
